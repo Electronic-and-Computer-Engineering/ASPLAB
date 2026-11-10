@@ -141,9 +141,11 @@ impulse response and they support the representation of signals. In this very
 first task, implement the delta function and the step function as standalone
 functions:
 
-$$\delta[n] = \begin{cases} 1, & \text{if } n = 0 \\ 0, & \text{if } n \neq 0 \end{cases}
+```math
+\delta[n] = \begin{cases} 1, & \text{if } n = 0 \\ 0, & \text{if } n \neq 0 \end{cases}
 \qquad\qquad
-u[n] = \begin{cases} 1, & \text{if } n \geq 0 \\ 0, & \text{if } n < 0 \end{cases}$$
+u[n] = \begin{cases} 1, & \text{if } n \geq 0 \\ 0, & \text{if } n < 0 \end{cases}
+```
 
 $\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad$ for $-20 \leq n \leq 20$.
 
@@ -172,7 +174,9 @@ using MATLAB help.
 
 Use the signal
 
-$$x[n] = (-0.2 + j0.3)^n \sin\left(\tfrac{\pi}{4}n\right)\left(u[n+3]-u[n-5]\right)$$
+```math
+x[n] = (-0.2 + j0.3)^n \sin\left(\tfrac{\pi}{4}n\right)\left(u[n+3]-u[n-5]\right)
+```
 
 for the following tasks.
 
@@ -212,7 +216,9 @@ built-in MATLAB function `conv`.
 
 **(c)** Generate the following impulse response
 
-$$h_{ech}[n] = \sum_{k=0}^{\infty}\alpha^k\,\delta(n-kN)$$
+```math
+h_{ech}[n] = \sum_{k=0}^{\infty}\alpha^k\,\delta(n-kN)
+```
 
 for $\alpha = 0.7$ and $N = 4$, for $-20 \leq n \leq 20$.
 
@@ -249,11 +255,17 @@ sounds we need to consider the following:
 **(a)** Create the following sounds at $440\,\text{Hz}$ for a sampling
 frequency $f_s = 16384\,\text{Hz}$ with a duration of $T = 0.5\,\text{s}$:
 
-$$\text{Sine wave:}\quad y(t) = \sin(\omega t)$$
+```math
+\text{Sine wave:}\quad y(t) = \sin(\omega t)
+```
 
-$$\text{Square wave:}\quad y(t) = \begin{cases} 0.6, & \text{if } \sin(\omega t) > 0 \\ 0, & \text{if } \sin(\omega t) < 0 \end{cases}$$
+```math
+\text{Square wave:}\quad y(t) = \begin{cases} 0.6, & \text{if } \sin(\omega t) > 0 \\ 0, & \text{if } \sin(\omega t) < 0 \end{cases}
+```
 
-$$\text{3 sine waves:}\quad y(t) = 0.6\sin(\omega t) + 0.3\sin(2\omega t) + 0.1\sin(4\omega t)$$
+```math
+\text{3 sine waves:}\quad y(t) = 0.6\sin(\omega t) + 0.3\sin(2\omega t) + 0.1\sin(4\omega t)
+```
 
 `plot` each sound and listen to it, if you want to, using `sound`. How could a
 triangular wave be implemented?
@@ -279,13 +291,19 @@ help.
 Smoothing suppresses what is unimportant in a measurement (i.e. noise), so
 that the trend becomes visible. The three classic smoothers are:
 
-$$\text{Moving Average Filter:}\quad y[n] = \frac{1}{L}\sum_{k=0}^{L-1}x[n-k]$$
+```math
+\text{Moving Average Filter:}\quad y[n] = \frac{1}{L}\sum_{k=0}^{L-1}x[n-k]
+```
 
-$$\text{Median Filter:}\quad y[n] = \begin{cases} \tilde{x}_{\frac{L+1}{2}} & \text{if } L \text{ is odd} \\[4pt] \frac{1}{2}\left(\tilde{x}_{\frac{L}{2}} + \tilde{x}_{\frac{L}{2}+1}\right) & \text{if } L \text{ is even} \end{cases}$$
+```math
+\text{Median Filter:}\quad y[n] = \begin{cases} \tilde{x}_{\frac{L+1}{2}} & \text{if } L \text{ is odd} \\[4pt] \frac{1}{2}\left(\tilde{x}_{\frac{L}{2}} + \tilde{x}_{\frac{L}{2}+1}\right) & \text{if } L \text{ is even} \end{cases}
+```
 
 where $\tilde{x}$ is the sorted window $\left(x[n-L+1],\ldots,x[n]\right)$.
 
-$$\text{Weighted Moving Average Filter:}\quad y[n] = \sum_{k=-K}^{K}w_k\,x[n-k] \quad\text{with}\quad w_k = \tfrac{1}{8},\tfrac{1}{4},\tfrac{1}{4},\tfrac{1}{4},\tfrac{1}{8}$$
+```math
+\text{Weighted Moving Average Filter:}\quad y[n] = \sum_{k=-K}^{K}w_k\,x[n-k] \quad\text{with}\quad w_k = \tfrac{1}{8},\tfrac{1}{4},\tfrac{1}{4},\tfrac{1}{4},\tfrac{1}{8}
+```
 
 ```matlab
 % MATLAB built-in test data
@@ -335,13 +353,15 @@ plot(days,tempC,days-fDelay/24,binomialMA)
 
 **(d)** A filter is linear if superposition holds,
 
-$$\mathcal{H}\{\alpha x_1[n] + \beta x_2[n]\} = \alpha\,\mathcal{H}\{x_1[n]\} + \beta\,\mathcal{H}\{x_2[n]\}$$
+```math
+\mathcal{H}\lbrace \alpha x_1[n] + \beta x_2[n]\rbrace = \alpha\,\mathcal{H}\lbrace x_1[n]\rbrace + \beta\,\mathcal{H}\lbrace x_2[n]\rbrace
+```
 
 Test your three functions with random signals $x_1[n]$, $x_2[n]$ and random
 scalars $\alpha$, $\beta$, and report the largest deviation for each one. One
 of the three is not linear — find a short pair of input signals that proves it
 by hand. Does homogeneity,
-$\mathcal{H}\{\alpha x[n]\} = \alpha\,\mathcal{H}\{x[n]\}$, still hold for
+$\mathcal{H}\lbrace \alpha x[n]\rbrace = \alpha\,\mathcal{H}\lbrace x[n]\rbrace$, still hold for
 that filter?
 
 **(e)** Compare your three filter results. Which filter could fit to which
@@ -356,7 +376,9 @@ $h[n]$ at all?
 `[vX] = computeDTFT(vn,vx,vw)` without using a loop. Consider the general form
 of the DTFT:
 
-$$X(\omega) = \sum_{n=-\infty}^{\infty}x[n]\,e^{-j\omega n}$$
+```math
+X(\omega) = \sum_{n=-\infty}^{\infty}x[n]\,e^{-j\omega n}
+```
 
 **(b)** Compute the DTFT for the given input signal $x[n] = [1,5,-1,6,3]$
 using your function `computeDTFT`. Plot your result. Does the result agree
@@ -378,7 +400,9 @@ Investigate in the MATLAB functions `audiowrite`, `audioread`, `sound`,
 Musical distance is measured in cents: one semitone is $100$ cents, one octave
 $1200$. The deviation of a frequency $f$ from a reference $f_\mathrm{ref}$ is
 
-$$\Delta = 1200\,\log_2\left(\frac{f}{f_\mathrm{ref}}\right)\ \text{cents}$$
+```math
+\Delta = 1200\,\log_2\left(\frac{f}{f_\mathrm{ref}}\right)\ \text{cents}
+```
 
 A tuner has to be accurate to a few cents — at $A_4 = 440\,\text{Hz}$ that is
 $0.25\,\text{Hz}$.
@@ -404,7 +428,9 @@ matter how much you zero-pad? Put the procedure into a function
 you do not have to tell it. Instead of storing a table of all notes, use that
 equal temperament is geometric: the nearest note lies
 
-$$m = \mathrm{round}\left(12\log_2\left(\frac{f}{f_\mathrm{ref}}\right)\right)$$
+```math
+m = \mathrm{round}\left(12\log_2\left(\frac{f}{f_\mathrm{ref}}\right)\right)
+```
 
 semitones from the reference, its frequency is
 $f_m = f_\mathrm{ref}\,2^{m/12}$, and the deviation from it is again measured
