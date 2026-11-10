@@ -9,6 +9,23 @@ FH JOANNEUM — Applied Signal Processing
 
 ---
 
+## Contents
+
+- [0. Writing a MATLAB function](#0-writing-a-matlab-function)
+  - [A function lives in its own file](#a-function-lives-in-its-own-file)
+  - [Several inputs and several outputs](#several-inputs-and-several-outputs)
+  - [Where MATLAB looks for it](#where-matlab-looks-for-it)
+  - [Package folders: +](#package-folders-)
+  - [Naming convention used in this course](#naming-convention-used-in-this-course)
+  - [Test it immediately](#test-it-immediately)
+- [Example 1: Special Signals](#example-1-special-signals)
+- [Example 2: Representation of DT Signals](#example-2-representation-of-dt-signals)
+- [Example 3: Convolution](#example-3-convolution)
+- [Example 4: Sounds](#example-4-sounds)
+- [Example 5: Pre-Processing filter](#example-5-pre-processing-filter)
+- [Example 6: Discrete-Time Fourier Transform — Implementation](#example-6-discrete-time-fourier-transform--implementation)
+- [Example 7: Discrete-Time Fourier Transform — A Tuner](#example-7-discrete-time-fourier-transform--a-tuner)
+
 ## 0. Writing a MATLAB function
 
 Almost every task below asks you to *write a function*. If you have only ever
