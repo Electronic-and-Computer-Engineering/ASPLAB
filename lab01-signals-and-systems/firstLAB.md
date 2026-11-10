@@ -159,12 +159,6 @@ signals, all for $-20 \leq n \leq 20$:
 
 **(c)** $3\delta[n+1] + n^2\left(u[n+5]-u[n+4]\right) + 10(0.5)^n$
 
-**(d)** $u[n+4]-u[n-5]$, $\quad n\left(u[n]-u[n-8]\right)$, $\quad (5-|n|)\left(u[n+4]-u[n-5]\right)$
-
-**(e)** $u[n+6]-2u[n]+u[n-6]$, $\quad \sum\limits_{k=0}^{4}(k+1)\,\delta[n-3k]$
-
-**(f)** $0.8^{|n|}$, $\quad (0.9)^n\cos\left(\frac{\pi}{6}n\right)u[n]$, $\quad (1.2)^n\left(u[n]-u[n-10]\right)$
-
 > **HINT:** Every one of these signals can be built from `delta` and `step`
 > alone, without a single `if` and without a loop. Two steps subtracted from
 > each other give you a window — that is the trick behind most of them.
