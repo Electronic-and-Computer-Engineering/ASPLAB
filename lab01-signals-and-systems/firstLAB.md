@@ -440,3 +440,5 @@ back to the time domain.* Analyse an animal sound the same way — record your
 own, or take one from [`files/recordings/`](files/recordings/). Does it have a
 pitch at all? Compare two short windows from different points in time and
 explain why a single DTFT over the whole file tells you so little.
+
+![FourierCat](https://imgs.xkcd.com/comics/fourier.jpg)
